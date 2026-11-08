@@ -1,0 +1,56 @@
+{
+  "name": "tempo-tracker",
+  "version": "1.0.1",
+  "description": "Suivi local de consommation et couts EDF Tempo",
+  "author": "kikof17",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "build:web": "node scripts/build-web.mjs",
+    "android:sync": "npm run build:web && npx cap sync android",
+    "android:open": "npx cap open android"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "electron": "^37.3.1",
+    "electron-builder": "^26.0.12",
+    "typescript": "^7.0.2"
+  },
+  "build": {
+    "appId": "com.kikof17.tempo",
+    "productName": "Tempo Tracker",
+    "electronDist": "node_modules/electron/dist",
+    "asar": true,
+    "files": [
+      "main.js",
+      "index.html",
+      "styles.css",
+      "app.js",
+      "data/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Tempo Tracker"
+    }
+  }
+}

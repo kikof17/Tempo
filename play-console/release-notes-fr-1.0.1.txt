@@ -1,0 +1,4 @@
+Mise à jour 1.0.1
+- Améliorations de stabilité pour la publication Android.
+- Préparation complète du package de publication Play Console.
+- Alignement des informations de version pour le prochain déploiement AAB.
