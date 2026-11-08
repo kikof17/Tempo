@@ -1,0 +1,9 @@
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local server cache
+.cache/

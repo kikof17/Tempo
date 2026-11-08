@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tempo Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <main class="layout">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Suivi local EDF Tempo</p>
+          <h1>Consommation et coûts</h1>
+          <p class="subtitle">
+            Analyse de la consommation électrique à partir des exports Linky, avec calcul des coûts
+            journaliers, mensuels et annuels.
+          </p>
+        </div>
+        <div class="status" id="status">Chargement des données...</div>
+      </header>
+
+      <section class="panel controls">
+        <div class="control">
+          <label for="yearSelect">Année</label>
+          <select id="yearSelect"></select>
+        </div>
+        <div class="control">
+          <label for="monthSelect">Mois</label>
+          <select id="monthSelect">
+            <option value="all">Tous</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="cards" id="cards"></section>
+
+      <section class="grid-two">
+        <article class="panel">
+          <h2>Évolution journalière</h2>
+          <canvas id="dailyChart" height="110"></canvas>
+        </article>
+        <article class="panel">
+          <h2>Coûts mensuels</h2>
+          <canvas id="monthlyChart" height="110"></canvas>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Derniers jours</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Conso (kWh)</th>
+                <th>Coût (€)</th>
+                <th>Répartition</th>
+              </tr>
+            </thead>
+            <tbody id="dailyTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel note">
+        <h2>Tarifs pris en compte</h2>
+        <p>
+          Barème Tempo utilisé (à partir du 01/08/2026) : Bleu HC 0,1356 €, Bleu HP 0,1654 €,
+          Blanc HC 0,1536 €, Blanc HP 0,1921 €, Rouge HC 0,1615 €, Rouge HP 0,7295 €.
+        </p>
+        <p>
+          Les lignes journalières marquées <strong>NC</strong> dans les exports mensuels sont
+          recalculées via la différence d’index quand c’est possible.
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
